@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Container, Typography, CircularProgress, TextField, Button, Box } from '@mui/material';
+import { Box, Button, CircularProgress, Container, TextField, Typography } from '@mui/material';
 
 function UserDetails() {
-    const { userId } = useParams();
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { userId } = useParams(),
+        [user, setUser] = useState(null),
+        [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -24,63 +24,87 @@ function UserDetails() {
     }, [userId]);
 
     return (
-        <Container maxWidth="sm" style={{ marginTop: '40px', backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '10px' }}>
-            <Typography variant="h4" gutterBottom style={{ color: '#007bff' }}>
+        <Container
+            maxWidth="sm"
+            style={{ marginTop: '40px', backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '10px' }}
+        >
+            <Typography
+                gutterBottom
+                style={{ color: '#007bff' }}
+                variant="h4"
+            >
                 User Details
             </Typography>
+
             {loading ? (
                 <CircularProgress style={{ color: '#007bff' }} />
             ) : user ? (
                 <form>
                     <TextField
+                        InputProps={{ readOnly: true }}
+                        fullWidth
                         label="Username"
+                        margin="normal"
                         value={user.username}
                         variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        InputProps={{ readOnly: true }}
                     />
+
                     <TextField
+                        InputProps={{ readOnly: true }}
+                        fullWidth
                         label="Email"
+                        margin="normal"
                         value={user.email}
                         variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        InputProps={{ readOnly: true }}
                     />
+
                     <TextField
+                        InputProps={{ readOnly: true }}
+                        fullWidth
                         label="Experience"
+                        margin="normal"
                         value={user.Experience}
                         variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        InputProps={{ readOnly: true }}
                     />
+
                     <TextField
-                        label="Description"
-                        value={user.description}
-                        variant="outlined"
+                        InputProps={{ readOnly: true }}
                         fullWidth
+                        label="Description"
                         margin="normal"
                         multiline
                         rows={3}
-                        InputProps={{ readOnly: true }}
+                        value={user.description}
+                        variant="outlined"
                     />
+
                     <TextField
+                        InputProps={{ readOnly: true }}
+                        fullWidth
                         label="Date of Birth"
+                        margin="normal"
                         value={user.DOB}
                         variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        InputProps={{ readOnly: true }}
                     />
                 </form>
             ) : (
-                <Typography variant="body1" style={{ color: 'red' }}>No user found</Typography>
+                <Typography
+                    style={{ color: 'red' }}
+                    variant="body1"
+                >
+                    No user found
+                </Typography>
             )}
+
             <Box mt={3}>
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    <Button variant="contained" color="secondary">
+                <Link
+                    style={{ textDecoration: 'none' }}
+                    to="/"
+                >
+                    <Button
+                        color="secondary"
+                        variant="contained"
+                    >
                         Back
                     </Button>
                 </Link>
