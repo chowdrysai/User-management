@@ -57,7 +57,7 @@ function List({ users, handleEdit, handleDelete }) {
             }
         }
         return 0;
-    });
+    }); 
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -122,7 +122,7 @@ function List({ users, handleEdit, handleDelete }) {
                                             color="primary"
                                             sx={{
                                                 '&:hover': {
-                                                    backgroundColor: 'blue', // Change this to your desired hover color
+                                                    backgroundColor: 'blue',
                                                 },
                                             }}
                                         >

@@ -132,11 +132,11 @@ function Edit({ users, selecteduser, setusers, setIsEditing }) {
               type="submit"
               variant="contained"
               color="primary"
-              disabled={!hasFormChanged} // Disable the button if form hasn't changed
-              style={{ cursor: 'pointer' }} // Always show pointer cursor
+              disabled={!hasFormChanged} 
+              style={{ cursor: 'pointer' }} 
               className={!hasFormChanged ? 'disabled-button' : ''}
             >
-              {hasFormChanged ? 'Update' : 'Update'} {/* Show different symbol if unchanged */}
+              {hasFormChanged ? 'Update' : 'Update'}
             </Button>
             <Button
               style={{ marginLeft: '12px' }}

@@ -15,11 +15,11 @@ const Validate = (schema, property) => (req, res, next) => {
     // if validation is all combining the params and body to a single object.
     let object = {};
     if (isBoth) {
-        object = { ...req['query'], ...req['params'], ...req['body'] };
+        object = { ...req.query, ...req.params, ...req.body };
     } else if (property === 'body') {
         object = req[property];
     } else {
-        object = { ...req['query'], ...req['params'] };
+        object = { ...req.query, ...req.params };
     }
 
     // validate and return to main route
@@ -30,16 +30,16 @@ const Validate = (schema, property) => (req, res, next) => {
         // set to returned value if success and body property before calling next
         // Joi seems to deep clone the objects
         // this allows us to make use of Joi methods like `strip()` that manipulates the input
-        if (property === 'body') req['body'] = value;
+        if (property === 'body') req.body = value;
         return next();
     }
     const { details } = error;
-    const message = details.map(i => i.message).join(',');
+    const message = details.map((i) => i.message).join(',');
     const validationError = `Validation Error: ${req.originalUrl} - Reason: ${message}`;
     return res.status(403).json({ error: 'Validation Error', message: validationError });
 };
 
 // export the method
 module.exports = {
-    validate: Validate
+    validate: Validate,
 };
