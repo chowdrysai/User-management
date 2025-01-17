@@ -22,7 +22,6 @@ function List({ users, handleEdit, handleDelete }) {
         [currentPage, setCurrentPage] = useState(1),
         [itemsPerPage] = useState(5),
         [filteredData, setFilteredData] = useState([]);
-
     
     useEffect(() => {
         const filteredUsers = users.filter(
