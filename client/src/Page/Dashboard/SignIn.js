@@ -39,7 +39,6 @@ function SignIn() {
 
             try {
                 const response = await axios.post('http://localhost:5000/login', userData);
-                console.log('Response:', response.data.token);
                 localStorage.setItem('userData', JSON.stringify(response.data.token));
                 Navigate('/home');
             } catch (error) {

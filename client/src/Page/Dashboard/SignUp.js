@@ -77,7 +77,6 @@ export default function SignUp() {
 
             try {
                 const response = await axios.post('http://localhost:5000/register', userData);
-                console.log('Response:', response.data);
                 Navigate('/login');
             } catch (error) {
                 setMessage(true);
