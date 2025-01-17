@@ -23,6 +23,7 @@ function List({ users, handleEdit, handleDelete }) {
         [itemsPerPage] = useState(5),
         [filteredData, setFilteredData] = useState([]);
 
+    
     useEffect(() => {
         const filteredUsers = users.filter(
             (user) =>
